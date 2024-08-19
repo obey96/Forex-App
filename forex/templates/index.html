@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Container for the main content of the page -->
+    <div class="container">
+        <h1>Forex Converter</h1>
+        <!-- Form for inputting conversion data -->
+        <form method="POST">
+            <label for="converting_from">Converting From:</label>
+            <input type="text" id="converting_from" name="converting_from" required>
+            
+            <label for="converting_to">Converting To:</label>
+            <input type="text" id="converting_to" name="converting_to" required>
+            
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+            
+            <button type="submit">Convert</button>
+        </form>
+        <!-- Conditional rendering of the result or error message -->
+        {% if converted_amount %}
+        <!-- Display the result of the conversion -->
+            <p>{{ amount }} {{ converting_from }} = {{ converted_amount }} {{ converting_to }}</p>
+        {% elif error %}
+        <!-- Display any error messages -->
+            <p>{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
